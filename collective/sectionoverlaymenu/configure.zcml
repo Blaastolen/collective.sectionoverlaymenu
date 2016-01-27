@@ -1,0 +1,24 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="plone.tiles">
+
+
+
+
+
+    <browser:page name="section-menu"
+      for="*"
+      class=".browser.SectionMeny"
+      permission="zope2.View"
+      />
+
+      <browser:viewlet
+        name="sectionmenu.viewlet"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+        template="viewlet.pt"
+        permission="zope2.View"
+        />
+
+</configure>

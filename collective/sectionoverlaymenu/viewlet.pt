@@ -1,0 +1,43 @@
+<style>
+    #portal-globalnav li{
+    position: relative;
+    }
+    .sectionsubmenu {
+    background-color: #7099bf;
+    padding: 1em;
+    clear: both;
+    display: none;
+    margin: -1px -15px -1px;
+    }
+    .sectionsubmenu .row { margin-left: 0; margin-right: 0;}
+    .sectionsubmenu.open { display: block;  }
+  </style>
+<script type="text/javascript">
+  $(document).ready(function() {
+  $("#portal-globalnav").children("li").each(function(i, itm) {
+    var id = $(itm).attr("id");
+    idx = $(itm).attr("id").split("-")[1]
+    $.ajax({
+    url: "@@section-menu?section="+idx,
+    context: document.body
+    }).done(function(html) {
+      $( "#portal-globalnav-collapse" ).append(html);
+    });
+
+  var timer;
+  handlerIn = function(){
+    $(".sectionsubmenu.open").removeClass("open");
+    idx = $(this).attr("id").split("-")[1]
+    $(".sectionsubmenu."+idx).addClass("open");
+  }
+
+  handlerOut = function(){
+  }
+
+  $("#portal-globalnav li").hover( handlerIn, handlerOut );
+
+
+  });
+
+});
+</script>
